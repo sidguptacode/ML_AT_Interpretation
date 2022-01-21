@@ -1,0 +1,27 @@
+joblib==1.0.1
+matplotlib
+matplotlib-inline==0.1.2
+numpy
+opencv-contrib-python==4.5.2.52
+opencv-python==4.3.0.38
+pandas
+pandocfilters
+pickleshare
+Pillow
+PyYAML
+scikit-image
+scikit-learn
+scipy
+tables
+tqdm
+# tensorflow==1.15
+# Keras
+pyocclient
+google-api-core
+google-api-python-client
+google-auth
+# google-auth-httplib2
+# google-auth-oauthlib
+google-pasta
+googleapis-common-protos
+ngboost

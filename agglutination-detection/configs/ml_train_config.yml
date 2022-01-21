@@ -1,0 +1,13 @@
+seed: 0
+ml_params: {
+  model_params: {
+    mlp: 
+      {
+        alpha: 0.01, max_iter: 50000, hidden_layer_sizes: [16, 8]
+      }, 
+    rf: 
+      {
+        n_estimators: 10, max_depth: 5
+      }
+  }
+}

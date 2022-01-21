@@ -1,0 +1,123 @@
+# Specifies all image-processing parameters. 
+# NOTE: There will be another .yml file in the img_folder that specifies
+# information about selected wells, their concentrations, and other metadata.
+
+# Initial variables
+seed: 0
+max_processes: 8
+feature_vec_size: 21
+
+# Radius of a well-circle, in pixels.
+# The well image will be a square of size (well_radius, well_radius)
+well_radius: 91
+
+# Dimensions of the tray
+tray_width: 8
+tray_height: 12
+
+# Image processing functions to compute, in this order.
+# Possible options for name: 
+#   <original, apply_adaptive_thresholding, add_well_boundaries, apply_morph_open, apply_morph_close, remove_artificial_well_boundary, mask_binary_onto_original>
+# Possible options for features:
+#   <total_number_of_blobs, number_of_large_blobs, total_area_of_all_blobs, area_of_largest_blob, mean_light_intensity_of_all_blobs
+#   stdev_light_intensity_of_all_blobs, mean_light_intensity_of_largest_blob, stdev_light_intensity_of_largest_blob, eccentricity_of_largest_blob
+#   mean_eccentricity_of_all_blobs, stdev_eccentricity_of_all_blobs>
+proc_fns: [
+  {
+    name: original, 
+    hyperparams: {},
+    features: []
+  }, 
+  {
+    name: add_well_boundaries, 
+    hyperparams: {radius: 150, thickness: 142, color: black},
+    features: [rsd]
+  }, 
+  {
+    name: apply_adaptive_thresholding, 
+    hyperparams: {
+      block_size: 75,
+      offset: 10
+    },
+    features: []
+  }, 
+  {
+    name: add_well_boundaries, 
+    hyperparams: {radius: 150, thickness: 142, color: white},
+    features: []
+  }, 
+  {
+    name: apply_morph_open, 
+    hyperparams: {},
+    features: []
+  }, 
+  {
+    name: apply_morph_close, 
+    hyperparams: {},
+    features: []
+  }, 
+  {
+    name: remove_artificial_well_boundary, 
+    hyperparams: {color: white},
+    features: [
+      frame_num,
+      number_of_large_blobs,
+      total_area_of_all_blobs,
+      area_of_largest_blob,
+      eccentricity_MA_of_largest_blob,
+      eccentricity_ma_of_largest_blob,
+      mean_eccentricity_MA_of_all_blobs, # relative stdev eccentricity makes sense here. 
+      mean_eccentricity_ma_of_all_blobs,
+      total_perimeter_of_all_blobs,
+      perimeter_of_largest_blob,
+      centroid_x_of_largest_blob, # instead of having x, y; can map this to a flattened img location; y*width + x
+      centroid_y_of_largest_blob
+    ]
+  }, 
+  {
+    name: mask_binary_onto_original, 
+    hyperparams: {},
+    features: [
+      mean_light_intensity_of_all_blobs, 
+      mean_light_intensity_of_largest_blob,
+      stdev_light_intensity_of_all_blobs,  # relative stdev light intensity makes more sense here. 
+      stdev_light_intensity_of_largest_blob,
+      rsd_light_intensity_of_all_blobs
+    ]
+  },
+  {
+    name: mask_binary_inv_onto_original, 
+    hyperparams: {},
+    features: [
+      mean_light_intensity_of_background, 
+      stdev_light_intensity_of_background, 
+      rsd_light_intensity_of_background,
+    ]
+  }
+]
+
+
+# For creating and saving a labelled dataset
+run_type: create_dataset
+
+
+# Plots to generate
+plots: [
+]
+
+
+# For plotting the selected wells
+plot_well_matrix: {
+  # Specify which steps we want to plot the selected wells at.
+  # Note: the steps are 0-indexed, and this will plot the matrix after that step.
+  # To plot the original well matrix, add an 'original' element to the start of proc_functions.
+
+  # Include step 6 if you want to see the segmented blobs.
+  # Include step 0 if you want to see the original wells.
+  # Make [] if you don't want to plot any wells.
+  steps: [],
+
+  # For plotting the frames individually, instead of as a matrix. 
+  # Most of the time, this should be false.
+  plot_all_frames_indiv: false
+}
