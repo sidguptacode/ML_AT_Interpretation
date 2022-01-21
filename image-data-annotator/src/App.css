@@ -1,0 +1,22 @@
+@media only screen and (min-width: 680px) {
+    .app {
+        display: grid;
+        grid-template-columns: 20% 50% 30%;
+        padding-left: 30px;
+        grid-template-rows: auto;
+        font-family: 'Roboto', sans-serif;
+        margin-top: 2%;
+    }
+}
+
+.sidebar {
+    text-align: left;
+}
+
+.annotation {
+    text-align: center;
+}
+
+.reference {
+    text-align: center;
+}

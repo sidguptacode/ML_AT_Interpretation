@@ -1,0 +1,133 @@
+@media only screen and (min-width: 680px) {
+    .pageContainer {
+        display: grid;
+        grid-template-columns: 20% 70% 10%;
+        padding-left: 30px;
+        grid-template-rows: auto;
+        font-family: 'Roboto', sans-serif;
+        margin-top: 2%;
+    }
+}
+p {
+    font-size: 18px;
+}
+
+.sidebar {
+    text-align: left;
+}
+
+.homepageHeader {
+    text-align: center;
+}
+
+.userButton {
+    margin-top:20px;
+    height: 40px;
+    width: 200px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.scoreOptions {
+    display: grid;
+    grid-template-columns: 20% 10% 10% 10% 10% 10% 10% 20%;
+    text-align: center;
+}
+
+@media only screen and (min-width: 680px) {
+    .scoreButton {
+        width: 75px;
+        height: 50px;
+        font-size: 18px;
+        background-color:royalblue;
+        color:cornsilk;
+        border-radius: 5px;
+    }
+    .scoreOptions {
+        display: grid;
+        grid-template-columns: 20% 10% 10% 10% 10% 10% 10% 20%;
+        text-align: center;
+    }
+}
+
+
+.scoreOptions {
+    display: grid;
+    grid-template-columns: 2% 16% 16% 16% 16% 16% 16% 2%;
+    text-align: center;
+    grid-gap: 15px;
+    /* margin-left: -100px; */
+}
+.scoreButton {
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+    margin-right: 60px;
+    background-color:royalblue;
+    color:cornsilk;
+    border-radius: 5px;
+}
+
+.submitButton {
+    width: 200px;
+    height: 60px;
+    font-size: 18px;
+    margin-right: 60px;
+    margin-left: 35px;
+    margin-bottom: 30px;
+    color:white;
+    border-radius: 5px;
+}
+
+
+.uncertainButton {
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    margin-right: 60px;
+    margin-left: 35px;
+    color:white;
+    border-radius: 5px;
+}
+
+.rulesHeader {
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.labelHeader {
+    background-color: rgb(224, 238, 255);
+    font-weight: bold;
+}
+
+.ruleList {
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.ruleItem {
+    padding-bottom: 10px;
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+    font-size: 14px;
+}
+
+.inputField {
+    display: grid;
+    grid-template-columns: 20% 57% 23%;
+    text-align: center;
+    grid-gap: 15px;
+}
+
+.uncertainButton {
+    width: 200px;
+    height: 60px;
+    font-size: 18px;
+    margin-right: 60px;
+    color:white;
+    border-radius: 5px;
+}
+

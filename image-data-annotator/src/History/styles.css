@@ -1,0 +1,27 @@
+.historyItem {
+    display: grid;
+    grid-template-columns: 60% 10% 30%;
+    padding-bottom: 30px;
+}
+
+.imageName {
+    font-size: 12px;
+    text-align: left;
+}
+
+.redoButton {
+    font-size: 12px;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.history {
+    height: 100px;
+    overflow: scroll;
+}
+
+.historyHeader {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
